@@ -1,13 +1,19 @@
 const Input = ({ label, invalid, ...props }) => {
+  let labelClasses = "mb-2 block text-xs font-bold uppercase tracking-wide";
+  let inputClasses = "w-full rounded border px-3 py-2 leading-tight  shadow";
+
+  if (invalid) {
+    labelClasses += " text-red-400";
+    inputClasses += " text-red-500 bg-red-100 border-red-300";
+  } else {
+    labelClasses += " text-stone-300";
+    inputClasses += " text-gray-700 bg-stone-300 ";
+  }
+
   return (
     <p>
-      <label className="mb-2 block text-xs font-bold uppercase tracking-wide text-stone-300">
-        {label}
-      </label>
-      <input
-        className="w-full rounded border bg-stone-300 px-3 py-2 leading-tight text-gray-700 shadow"
-        {...props}
-      />
+      <label className={labelClasses}>{label}</label>
+      <input className={inputClasses} {...props} />
     </p>
   );
 };
